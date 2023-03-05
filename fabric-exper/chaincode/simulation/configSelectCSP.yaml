@@ -1,0 +1,55 @@
+test:
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: selectCP
+      txDuration: 60
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 25
+      workload:
+        module: my-exper/selectCSP.js
+monitors:
+  resource:
+  - module: docker
+    options:
+      interval: 5
+      cpuUsageNormalization: true
+      containers:
+      - peer0.org1.example.com
+      - peer0.org2.example.com
+      - peer0.org3.example.com
+      - orderer.example.com
+      charting:
+        bar:
+          metrics: [ all ]
+        polar:
+          metrics: [ all ]
+  - module: prometheus
+    options:
+        url: "http://localhost:7946"
+        metrics:
+          include: [ dev-.*, couch, peer, orderer ]
+          queries:
+            - name: Max Memory (MB)
+              query: sum(container_memory_rss{name=~".+"}) by (name)
+              step: 10
+              label: name
+              statistic: max
+              multiplier: 0.000001
+            - name: Avg Memory (MB)
+              query: sum(container_memory_rss{name=~".+"}) by (name)
+              step: 10
+              label: name
+              statistic: avg
+              multiplier: 0.000001
+            - name:   CPU (%)
+              query: sum(irate(container_cpu_usage_seconds_total{name=~".+"}[5m])*100) by (name)
+              step: 10
+              label: name
+              statistic: avg
+              multiplier: 0.000001
+  transaction:
+  - module: prometheus

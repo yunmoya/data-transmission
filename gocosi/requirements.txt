@@ -1,0 +1,6 @@
+blspy==1.0.16
+grpcio==1.51.1
+grpcio-tools==1.51.1
+numpy==1.18.1
+openpyxl==3.0.10
+protobuf==4.21.12

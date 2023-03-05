@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:mysql://10.1.0.133:3306/cloudservice?serverTimezone=Asia/Shanghai
+    username: root
+    password: bxsmm133
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+csp:
+  id: 1 # 用于指定分布式uid生成器的机器id
+  name: csp133
+server:
+  port: 8080

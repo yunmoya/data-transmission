@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lcc.cloudservice.mapper.VirtualMachineMapper">
+    <select id="getRestVMOne" resultType="com.lcc.cloudservice.entity.VirtualMachine">
+        select id, status, name, create_time, config_id, cost
+        from virtual_machine
+        where status=#{status} and config_id=#{configId}
+        limit 1
+    </select>
+</mapper>

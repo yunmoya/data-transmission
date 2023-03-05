@@ -1,0 +1,27 @@
+[[servers]]
+  Address = "tls://10.1.0.133:7770"
+  Suite = "Ed25519"
+  Public = "2e2295087d7011d183204066924abe42ea6270e3968d6f3e3389180d4be3683d"
+  Description = "cosi133"
+  [servers.Services]
+    [servers.Services.blsCoSiService]
+      Public = "7c09982a6ca24b702613109348298feaf46ccac9b9ea921beebf1037b5035e33088987a16d43cf0d359b77530fd57f7d16808e070d6934b49ab8aac50eec15be5b0658a14653a796d97e5ba93f0d1d0db2e965617402b3b8a6ac72f58eddeda000b0a967ca597d8024b688feb04043d48cb4852c5d3bf26b4ede4156f1d6fd1d"
+      Suite = "bn256.adapter"
+[[servers]]
+  Address = "tls://10.1.0.155:7770"
+  Suite = "Ed25519"
+  Public = "5587544811422d359a880f7cb9289a5f8ca8627228320b7e9f92d6bfeb7e26f9"
+  Description = "blscosi155"
+  [servers.Services]
+    [servers.Services.blsCoSiService]
+      Public = "3c2dfe692530841fc9f0ef877edb67894f60d9dde139f483a4668b310eae6a546d971e173cd881d8057edd4321b88889d7fc382e5f1e83bcac5fff00438c165d70e0f9c78dbd72e761da2e30e40ee0ee61c6c662302b91afe6431164f38af5ae3876ed40c6b94aeebf216b309527f7678bf3d480097b2d15e9c7b44758160a72"
+      Suite = "bn256.adapter"
+[[servers]]
+  Address = "tls://10.1.0.154:7770"
+  Suite = "Ed25519"
+  Public = "e171a5f49a355eaf054273e879c1b6242843101bc3ef49585ccfdc807947db8c"
+  Description = "blscosi154"
+  [servers.Services]
+    [servers.Services.blsCoSiService]
+      Public = "17c3f815946f488c9fb2d53f231570b12a79c09f1ea18bbe58617f9c71351995602aae1c1f11504e840898fc2f4a3a7d01d6700ba2178040b47edef9cdb0b6a71a46515b04f517cb3d65c711f83dc672e823cf2d508ca3fe9296246f4fc8447e6c10727e5094088cf2908af205ea2f70c8167dc1849fb913b54204abd3656bb1"
+      Suite = "bn256.adapter"
