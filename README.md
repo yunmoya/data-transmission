@@ -15,6 +15,6 @@
 - [Ethereum smart contract](https://github.com/yunmoya/data-transmission/tree/main/truffle-exper/truffle)
 
 ## Client Component:
-- [User Client](https://github.com/yunmoya/data-transmission/tree/main/client)
+- [User Client](https://github.com/yunmoya/data-transmission/tree/main/truffle-exper/client)
 - Aggregated Signature Validator:
   - [BLSCosi](https://github.com/yunmoya/data-transmission/tree/main/verify-service)
