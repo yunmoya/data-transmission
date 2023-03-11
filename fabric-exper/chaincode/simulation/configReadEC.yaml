@@ -8,7 +8,7 @@ test:
       rateControl:
         type: fixed-rate
         opts:
-          tps: 500
+          tps: 25
       workload:
         module: my-exper/readec.js
 monitors:
@@ -46,10 +46,10 @@ monitors:
               statistic: avg
               multiplier: 0.000001
             - name:   CPU (%)
-              query: sum(irate(container_cpu_usage_seconds_total{name=~".+"}[5m])*100) by (name)
+              query: sum(rate(container_cpu_usage_seconds_total{name=~".+"}[1m])) by (name)
               step: 10
               label: name
               statistic: avg
-              multiplier: 0.000001
+              multiplier: 100
   transaction:
   - module: prometheus

@@ -152,7 +152,7 @@
                     </tr>
 
                     <tr>
-                         <td>selectCP</td> <td>29</td> <td>29845</td> <td>497.7</td> <td>32.68</td> <td>0.10</td> <td>2.16</td> <td>337.3</td>
+                         <td>selectCP</td> <td>151</td> <td>1354</td> <td>25.1</td> <td>2.05</td> <td>0.24</td> <td>0.26</td> <td>24.3</td>
                     </tr>
                 </table>
             </div>
@@ -163,7 +163,7 @@
 rateControl:
   type: fixed-rate
   opts:
-    tps: 500
+    tps: 25
 </pre>
                         <h3>Performance metrics for selectCP</h3>
                             <table style="min-width: 100%;">
@@ -171,7 +171,7 @@ rateControl:
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>selectCP</td> <td>29</td> <td>29845</td> <td>497.7</td> <td>32.68</td> <td>0.10</td> <td>2.16</td> <td>337.3</td>
+                                     <td>selectCP</td> <td>151</td> <td>1354</td> <td>25.1</td> <td>2.05</td> <td>0.24</td> <td>0.26</td> <td>24.3</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for selectCP</h3>
@@ -183,94 +183,112 @@ rateControl:
                                          <th>Metric</th> <th>Prometheus Query</th> <th>Name</th> <th>Value</th>
                                     </tr>
                                     <tr>
-                                         <td>Max Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>23.5</td>
+                                         <td>Max Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>7.59</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>25.3</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>20.1</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>8.13</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>19.5</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>22.9</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>7.97</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>28.4</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>7.38</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>6.75</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>19.7</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>orderer.example.com</td> <td>116</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>18.7</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>3.88e+3</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>7.00</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>314</td>
+                                         <td></td> <td></td> <td>orderer.example.com</td> <td>129</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>187</td>
+                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>2.94e+3</td>
                                     </tr>
                                     <tr>
-                                         <td>Avg Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>23.5</td>
+                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>302</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>17.9</td>
+                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>171</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>8.11</td>
+                                         <td>Avg Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>7.35</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>22.9</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>19.9</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>17.2</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>19.0</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>6.75</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>7.97</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>orderer.example.com</td> <td>100</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>7.38</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>3.40e+3</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>19.7</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>289</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>18.4</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>166</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>7.00</td>
                                     </tr>
                                     <tr>
-                                         <td>CPU (%)</td> <td>sum(irate(container_cpu_usage_seconds_total{name&#x3D;~&quot;.+&quot;}[5m])*100) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>6.50e-9</td>
+                                         <td></td> <td></td> <td>orderer.example.com</td> <td>119</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>0.0000558</td>
+                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>2.86e+3</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>1.07e-8</td>
+                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>298</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>8.10e-9</td>
+                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>170</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>0.0000641</td>
+                                         <td>CPU (%)</td> <td>sum(rate(container_cpu_usage_seconds_total{name&#x3D;~&quot;.+&quot;}[1m])) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>0.00556</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>2.87e-9</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>0.0119</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>orderer.example.com</td> <td>0.0000235</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>1.86</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>0.000141</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>0.00276</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>0.0000811</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>0.00733</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>0.0000374</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>0.0110</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>1.81</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>0.000499</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>orderer.example.com</td> <td>1.45</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>9.79</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>5.63</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>2.81</td>
                                     </tr>
                                 </table>
                                 </tr>
@@ -291,7 +309,7 @@ rounds:
     rateControl:
       type: fixed-rate
       opts:
-        tps: 500
+        tps: 25
     workload:
       module: my-exper&#x2F;selectCSP.js
 </pre>

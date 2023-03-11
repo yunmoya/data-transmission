@@ -10,7 +10,7 @@ test:
         opts:
           tps: 25
       workload:
-        module: my-exper/setStatus.js
+        module: my-exper/ecstatus.js
 monitors:
   resource:
   - module: docker
@@ -45,7 +45,7 @@ monitors:
               label: name
               statistic: avg
               multiplier: 0.000001
-            - name: CPU (%)
+            - name:   CPU (%)
               query: sum(rate(container_cpu_usage_seconds_total{name=~".+"}[1m])) by (name)
               step: 10
               label: name

@@ -20,7 +20,7 @@ const { WorkloadModuleBase } = require('@hyperledger/caliper-core');
 /**
  * Workload module for the benchmark round.
  */
-class ReadECWorkload extends WorkloadModuleBase {
+class ReadECStatusWorkload extends WorkloadModuleBase {
     /**
      * Initializes the workload module instance.
      */
@@ -33,13 +33,12 @@ class ReadECWorkload extends WorkloadModuleBase {
      * @return {Promise<TxStatus[]>}
      */
     async submitTransaction() {
-        let o = Math.ceil(Math.random()*1500);
-        let id = `83551-${o}`
+        let id = "asset8629087-27"
 
         const args = {
             contractId: 'ec',
             contractVersion: '1.0',
-            contractFunction: 'SetStatus',
+            contractFunction: 'StatusAssetExists',
             contractArguments: [id],
             timeout: 30
         };
@@ -50,10 +49,10 @@ class ReadECWorkload extends WorkloadModuleBase {
 
 /**
  * Create a new instance of the workload module.
- * @return {ReadECWorkload}
+ * @return {ReadECStatusWorkload}
  */
 function createWorkloadModule() {
-    return new ReadECWorkload();
+    return new ReadECStatusWorkload();
 }
 
 module.exports.createWorkloadModule = createWorkloadModule;

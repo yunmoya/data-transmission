@@ -128,15 +128,13 @@
                 <li>DLT: &nbsp<span style="font-weight: 500;">fabric</span></li>
                 <li>Name: &nbsp<span style="font-weight: 500;"></span></li>
                 <li>Description: &nbsp<span style="font-weight: 500;"></span></li>
-                <li>Benchmark Rounds: &nbsp<span style="font-weight: 500;">3</span></li>
+                <li>Benchmark Rounds: &nbsp<span style="font-weight: 500;">1</span></li>
                 <li><a href="#benchmarkInfo">Details</a></li>
             </ul>
             <ul>
                 <h3>&nbspBenchmark results</h3>
                 <li><a href="#benchmarksummary">Summary</a></li>
-                    <li><a href="#ec">ec</a></li>
                     <li><a href="#readec">readec</a></li>
-                    <li><a href="#fair">fair</a></li>
             </ul>
             <ul>
                 <h3>&nbspSystem under test</h3>
@@ -154,72 +152,10 @@
                     </tr>
 
                     <tr>
-                         <td>ec</td> <td>60</td> <td>0</td> <td>27.3</td> <td>0.25</td> <td>0.04</td> <td>0.14</td> <td>26.8</td>
-                    </tr>
-                    <tr>
-                         <td>readec</td> <td>1505</td> <td>0</td> <td>25.1</td> <td>2.04</td> <td>0.04</td> <td>0.16</td> <td>24.3</td>
-                    </tr>
-                    <tr>
-                         <td>fair</td> <td>0</td> <td>1510</td> <td>25.2</td> <td>-</td> <td>-</td> <td>-</td> <td>25.2</td>
+                         <td>readec</td> <td>1505</td> <td>0</td> <td>25.1</td> <td>2.04</td> <td>0.04</td> <td>0.15</td> <td>24.3</td>
                     </tr>
                 </table>
             </div>
-            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="ec">
-                <h2>Benchmark round: ec</h2>
-                <p></p>
-                <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">rateControl:
-  type: fixed-rate
-  opts:
-    tps: 25
-</pre>
-                        <h3>Performance metrics for ec</h3>
-                            <table style="min-width: 100%;">
-                                <tr>
-                                     <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
-                                </tr>
-                                <tr>
-                                     <td>ec</td> <td>60</td> <td>0</td> <td>27.3</td> <td>0.25</td> <td>0.04</td> <td>0.14</td> <td>26.8</td>
-                                </tr>
-                            </table>
-                        <h3>Resource utilization for ec</h3>
-                            <h4>Resource monitor: prometheus</h4>
-                            <table style="min-width: 100%;">
-                                <tr>
-                                <table>
-                                    <tr>
-                                         <th>Metric</th> <th>Prometheus Query</th> <th>Name</th> <th>Value</th>
-                                    </tr>
-                                    <tr>
-                                         <td>Max Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>ca_orderer</td> <td>7.66</td>
-                                    </tr>
-                                    <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>7.08</td>
-                                    </tr>
-                                    <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>6.45</td>
-                                    </tr>
-                                    <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>7.05</td>
-                                    </tr>
-                                    <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>5.87</td>
-                                    </tr>
-                                    <tr>
-                                         <td></td> <td></td> <td>orderer.example.com</td> <td>37.9</td>
-                                    </tr>
-                                    <tr>
-                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>94.3</td>
-                                    </tr>
-                                    <tr>
-                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>74.4</td>
-                                    </tr>
-                                </table>
-                                </tr>
-                            </table>
-                            <div class="charting">
-                            </div>
-            </div>
-
             <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="readec">
                 <h2>Benchmark round: readec</h2>
                 <p></p>
@@ -235,7 +171,7 @@ rateControl:
                                      <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
                                 </tr>
                                 <tr>
-                                     <td>readec</td> <td>1505</td> <td>0</td> <td>25.1</td> <td>2.04</td> <td>0.04</td> <td>0.16</td> <td>24.3</td>
+                                     <td>readec</td> <td>1505</td> <td>0</td> <td>25.1</td> <td>2.04</td> <td>0.04</td> <td>0.15</td> <td>24.3</td>
                                 </tr>
                             </table>
                         <h3>Resource utilization for readec</h3>
@@ -247,85 +183,112 @@ rateControl:
                                          <th>Metric</th> <th>Prometheus Query</th> <th>Name</th> <th>Value</th>
                                     </tr>
                                     <tr>
-                                         <td>Max Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>ca_orderer</td> <td>7.66</td>
+                                         <td>Max Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>7.36</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>10.6</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>22.2</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>6.45</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>15.5</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>9.53</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>7.97</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>5.87</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>7.38</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>orderer.example.com</td> <td>59.5</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>23.0</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>142</td>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>15.8</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>119</td>
-                                    </tr>
-                                </table>
-                                </tr>
-                            </table>
-                            <div class="charting">
-                            </div>
-            </div>
-
-            <div style="border-bottom: 1px solid #d9d9d9; padding-bottom: 10px;" id="fair">
-                <h2>Benchmark round: fair</h2>
-                <p></p>
-                <pre style="overflow: visible;white-space: pre-wrap;max-height:100%;">txDuration: 60
-rateControl:
-  type: fixed-rate
-  opts:
-    tps: 25
-</pre>
-                        <h3>Performance metrics for fair</h3>
-                            <table style="min-width: 100%;">
-                                <tr>
-                                     <th>Name</th> <th>Succ</th> <th>Fail</th> <th>Send Rate (TPS)</th> <th>Max Latency (s)</th> <th>Min Latency (s)</th> <th>Avg Latency (s)</th> <th>Throughput (TPS)</th>
-                                </tr>
-                                <tr>
-                                     <td>fair</td> <td>0</td> <td>1510</td> <td>25.2</td> <td>-</td> <td>-</td> <td>-</td> <td>25.2</td>
-                                </tr>
-                            </table>
-                        <h3>Resource utilization for fair</h3>
-                            <h4>Resource monitor: prometheus</h4>
-                            <table style="min-width: 100%;">
-                                <tr>
-                                <table>
-                                    <tr>
-                                         <th>Metric</th> <th>Prometheus Query</th> <th>Name</th> <th>Value</th>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>6.87</td>
                                     </tr>
                                     <tr>
-                                         <td>Max Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>ca_orderer</td> <td>7.66</td>
+                                         <td></td> <td></td> <td>orderer.example.com</td> <td>115</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>9.82</td>
+                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>2.94e+3</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>9.10</td>
+                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>304</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>9.85</td>
+                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>170</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>5.87</td>
+                                         <td>Avg Memory (MB)</td> <td>sum(container_memory_rss{name&#x3D;~&quot;.+&quot;}) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>7.36</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>orderer.example.com</td> <td>43.9</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>21.4</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>142</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>15.5</td>
                                     </tr>
                                     <tr>
-                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>119</td>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>7.97</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>7.35</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>21.6</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>15.2</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>6.87</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>orderer.example.com</td> <td>103</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>2.74e+3</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>287</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>158</td>
+                                    </tr>
+                                    <tr>
+                                         <td>CPU (%)</td> <td>sum(rate(container_cpu_usage_seconds_total{name&#x3D;~&quot;.+&quot;}[1m])) by (name)</td> <td>dev-peer0.org1.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>0.00379</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>0.608</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>0.0142</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org1.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>0.00161</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-7753b4744090a8f987e5c7f7fbda8ba1c21a6438b7939dbb6a7837fca9a98903</td> <td>0.00371</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-ec_1.0-cdc7c683f271484527d525cb9070c1e53fbf061e23ed7ce010fad89e328a1772</td> <td>0.743</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fair_1.0-60625e9efd3e8069c6979b959c872ce7b2ba7c00a1a7367a09d00b7beca51bc3</td> <td>0.00966</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>dev-peer0.org2.example.com-fixed-asset_1.0-9a155c308e475701b379d71eaa473341f357154d0759f144bcb58356cc437d92</td> <td>0.000555</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>orderer.example.com</td> <td>1.42</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org1.example.com</td> <td>7.20</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org2.example.com</td> <td>5.10</td>
+                                    </tr>
+                                    <tr>
+                                         <td></td> <td></td> <td>peer0.org3.example.com</td> <td>2.64</td>
                                     </tr>
                                 </table>
                                 </tr>
@@ -341,14 +304,6 @@ rateControl:
   type: local
   number: 5
 rounds:
-  - label: ec
-    txNumber: 60
-    rateControl:
-      type: fixed-rate
-      opts:
-        tps: 25
-    workload:
-      module: my-exper&#x2F;endorsement.js
   - label: readec
     txDuration: 60
     rateControl:
@@ -356,15 +311,7 @@ rounds:
       opts:
         tps: 25
     workload:
-      module: my-exper&#x2F;readec.js
-  - label: fair
-    txDuration: 60
-    rateControl:
-      type: fixed-rate
-      opts:
-        tps: 25
-    workload:
-      module: my-exper&#x2F;selectCSP.js
+      module: my-exper&#x2F;ecstatus.js
 </pre>
                 <h3>SUT</h3>
                 <pre id="sutdetails">not provided</pre>

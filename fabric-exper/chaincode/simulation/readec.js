@@ -33,12 +33,12 @@ class ReadECWorkload extends WorkloadModuleBase {
      * @return {Promise<TxStatus[]>}
      */
     async submitTransaction() {
-        let id = "83554-2"
+        let id = "asset8629087-27"
 
         const args = {
             contractId: 'ec',
             contractVersion: '1.0',
-            contractFunction: 'StatusAssetExists',
+            contractFunction: 'ReadEC',
             contractArguments: [id],
             timeout: 30
         };

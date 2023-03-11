@@ -6,12 +6,12 @@ caliper:
 
 channels:
   # channelName of mychannel matches the name of the channel created by test network
-  - channelName: lcctest
+#  - channelName: lcctest
+  - channelName: lccch
     # the chaincodeIDs of all the fabric chaincodes in caliper-benchmarks
     contracts:
       - id: ec
       - id: fair
-      - id: fixed-asset
 
 organizations:
   - mspid: Org1MSP
