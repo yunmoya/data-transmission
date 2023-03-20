@@ -1,0 +1,38 @@
+/cloudservice/.mvn
+/cloudservice/HELP.md
+/cloudservice/target/
+/gocosi/.idea/
+/gocosi/__pycache__
+/gocosi/certs/
+/gocosi/logFiles/
+/verify-service/.idea/
+
+# Dependencies
+/truffle-exper/node_modules
+/truffle-exper/.pnp
+/truffle-exper/.pnp.js
+
+# Production
+/truffle-exper/build
+/truffle-exper/client/src/contracts
+/truffle-exper/client/*/src/contracts
+
+# Testing
+/truffle-exper/coverage
+
+# Env
+/truffle-exper/.env
+/truffle-exper/.env.local
+/truffle-exper/.env.development.local
+/truffle-exper/.env.test.local
+/truffle-exper/.env.production.local
+
+# Editor
+/truffle-exper/.vscode
+
+# Misc.
+/truffle-exper/.DS_Store
+
+/truffle-exper/npm-debug.log*
+/truffle-exper/yarn-debug.log*
+/truffle-exper/yarn-error.log*
