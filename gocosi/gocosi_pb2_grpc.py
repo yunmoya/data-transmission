@@ -15,27 +15,27 @@ class GocosiRPCStub(object):
             channel: A grpc.Channel.
         """
         self.RegisterNode = channel.unary_unary(
-                '/GocosiRPC/RegisterNode',
+                '/gocosi.GocosiRPC/RegisterNode',
                 request_serializer=gocosi__pb2.RegisterNodeReq.SerializeToString,
                 response_deserializer=gocosi__pb2.CommonResp.FromString,
                 )
         self.NewMsg = channel.unary_unary(
-                '/GocosiRPC/NewMsg',
+                '/gocosi.GocosiRPC/NewMsg',
                 request_serializer=gocosi__pb2.NewMsgReq.SerializeToString,
                 response_deserializer=gocosi__pb2.NewMsgResp.FromString,
                 )
         self.GossipReq = channel.unary_unary(
-                '/GocosiRPC/GossipReq',
+                '/gocosi.GocosiRPC/GossipReq',
                 request_serializer=gocosi__pb2.Gossip.SerializeToString,
                 response_deserializer=gocosi__pb2.CommonResp.FromString,
                 )
         self.Info = channel.unary_unary(
-                '/GocosiRPC/Info',
+                '/gocosi.GocosiRPC/Info',
                 request_serializer=gocosi__pb2.Empty.SerializeToString,
                 response_deserializer=gocosi__pb2.InfoResp.FromString,
                 )
         self.GetPubkey = channel.unary_unary(
-                '/GocosiRPC/GetPubkey',
+                '/gocosi.GocosiRPC/GetPubkey',
                 request_serializer=gocosi__pb2.Empty.SerializeToString,
                 response_deserializer=gocosi__pb2.GetPubkeyResp.FromString,
                 )
@@ -104,7 +104,7 @@ def add_GocosiRPCServicer_to_server(servicer, server):
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'GocosiRPC', rpc_method_handlers)
+            'gocosi.GocosiRPC', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -123,7 +123,7 @@ class GocosiRPC(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/GocosiRPC/RegisterNode',
+        return grpc.experimental.unary_unary(request, target, '/gocosi.GocosiRPC/RegisterNode',
             gocosi__pb2.RegisterNodeReq.SerializeToString,
             gocosi__pb2.CommonResp.FromString,
             options, channel_credentials,
@@ -140,7 +140,7 @@ class GocosiRPC(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/GocosiRPC/NewMsg',
+        return grpc.experimental.unary_unary(request, target, '/gocosi.GocosiRPC/NewMsg',
             gocosi__pb2.NewMsgReq.SerializeToString,
             gocosi__pb2.NewMsgResp.FromString,
             options, channel_credentials,
@@ -157,7 +157,7 @@ class GocosiRPC(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/GocosiRPC/GossipReq',
+        return grpc.experimental.unary_unary(request, target, '/gocosi.GocosiRPC/GossipReq',
             gocosi__pb2.Gossip.SerializeToString,
             gocosi__pb2.CommonResp.FromString,
             options, channel_credentials,
@@ -174,7 +174,7 @@ class GocosiRPC(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/GocosiRPC/Info',
+        return grpc.experimental.unary_unary(request, target, '/gocosi.GocosiRPC/Info',
             gocosi__pb2.Empty.SerializeToString,
             gocosi__pb2.InfoResp.FromString,
             options, channel_credentials,
@@ -191,7 +191,7 @@ class GocosiRPC(object):
             wait_for_ready=None,
             timeout=None,
             metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/GocosiRPC/GetPubkey',
+        return grpc.experimental.unary_unary(request, target, '/gocosi.GocosiRPC/GetPubkey',
             gocosi__pb2.Empty.SerializeToString,
             gocosi__pb2.GetPubkeyResp.FromString,
             options, channel_credentials,

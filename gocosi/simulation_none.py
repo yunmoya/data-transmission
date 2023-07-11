@@ -17,19 +17,22 @@ if __name__ == '__main__':
     parser = ArgumentParser()
     parser.add_argument('-n', '--num', default=4, type=int, help='nodes num')
     parser.add_argument('-r', '--round', default=1, type=int, help='round number')
+    parser.add_argument('-f', '--fnum', default=0, type=int, help='failing nodes num')
     args = parser.parse_args()
     node_num = args.num
     round_num = args.round
     failing_node_num = args.fnum
     if node_num < 4:
         print("the number of nodes is at least 4")
+    if failing_node_num >= node_num:
+        print("the number of failing nodes should be smaller than node num")
     ports = []
     hosts = []
     for i in range(node_num):
         port = 30000 + i
         ports.append(port)
         hosts.append("localhost:" + str(port))
-    
+
     pList = []
     latency_list = []
     round_time = 0

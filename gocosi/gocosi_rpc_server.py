@@ -143,6 +143,7 @@ class GoCosiRPCServicer(gocosi_pb2_grpc.GocosiRPCServicer):
         return gocosi_pb2.GetPubkeyResp(publickeys=self.public_key_dict)
 
     def Info(self, request, context):
+        print("recieve request")
         config = configparser.RawConfigParser()
         config.read('configuration.properties')
         max_neighbours = int(config.get('client', 'max_neighbours'))
