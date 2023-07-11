@@ -5,9 +5,13 @@ import matplotlib.pyplot as plt
 from pandas import DataFrame
 
 # plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签SimHei
-plt.rcParams['font.family'] = 'Times New Roman'
-plt.rcParams['font.size'] = '10.5'
-
+config = {
+    "font.family": 'serif', # 衬线字体
+    "font.size": 20, # 相当于小四大小
+    "font.serif": ['SimSun'], # 宋体
+    "mathtext.fontset": 'stix', # matplotlib渲染数学字体时使用的字体，和Times New Roman差别不大
+    'figure.figsize': (10.0, 10.0)
+}
 
 def parse_pb_xls(filename):
     wb = openpyxl.load_workbook(filename)
@@ -39,7 +43,7 @@ def round_time_fig():
     fig = plt.figure()
     font1 = {'family': 'Times New Roman',
              'style': 'normal',
-             'size': 10.5,
+             'size': 10,
              }
     # ax1显示y1  ,ax2显示y2
     y = [0,0,0,0]
@@ -62,7 +66,9 @@ def round_time_fig():
 
 
     plt.ylabel('Gas Consumption')
+    plt.savefig('./output/gas.eps', dpi=300)  # eps文件，用于LaTeX
     plt.show()
+
 
 
 if __name__ == '__main__':

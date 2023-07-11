@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 from pandas import DataFrame
 
 plt.rcParams['font.family'] = 'Times New Roman'
-plt.rcParams['font.size'] = '10.5'
-
+plt.rcParams['font.size'] = '15'
+plt.rcParams['figure.figsize'] = (8.0, 8.0)  # 单位是inches
 
 def round_time_fig():
     func_list = ['ReadEC', 'EndorsementInc', 'StatusAssetExists', 'SetStatus', 'SelectCP', 'UpdatePropotion']
@@ -23,8 +23,9 @@ def round_time_fig():
         # plt.text(func_list[i], y[i], "%.f"%y[i], ha='center')
 
     # plt.xlabel('数据类型', fontdict=font1)
-    plt.xticks(rotation=30)
+    plt.xticks(rotation=20)
     plt.ylabel('Latency(s)')
+    plt.savefig('./output/prilatency.eps', dpi=300)  # eps文件，用于LaTeX
     plt.show()
 
 

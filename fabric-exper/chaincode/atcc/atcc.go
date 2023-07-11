@@ -3,10 +3,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 	"log"
 	"strconv"
-
-	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 )
 
 // SmartContract provides functions for managing an Asset
@@ -93,18 +92,6 @@ func (s *SmartContract) EndorsementInc(ctx contractapi.TransactionContextInterfa
 
 	return nil
 }
-
-//func (s *SmartContract) DeleteAsset(ctx contractapi.TransactionContextInterface, id string) error {
-//	exists, err := s.AssetExists(ctx, id)
-//	if err != nil {
-//		return err
-//	}
-//	if !exists {
-//		return fmt.Errorf("the asset %s does not exist", id)
-//	}
-//
-//	return ctx.GetStub().DelState(id)
-//}
 
 func (s *SmartContract) StatusAssetExists(ctx contractapi.TransactionContextInterface, id string) (bool, error) {
 	assetJSON, err := ctx.GetStub().GetState(id)

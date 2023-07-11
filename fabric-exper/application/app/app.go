@@ -7,9 +7,11 @@ import (
 	"app/cosiUtil"
 	"context"
 	"crypto/ecdsa"
+	"crypto/md5"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/x509"
+	"encoding/base64"
 	"encoding/json"
 	"encoding/pem"
 	"fmt"
@@ -43,6 +45,7 @@ const (
 	CspNum                 = 3
 	ReqPort                = 8080
 	PeerConsensusThreshold = 2
+	CosiNodeAddr           = "localhost:20000"
 )
 
 // configuration about fabric
@@ -56,10 +59,11 @@ var PeerInfoName = fmt.Sprintf("config%s.yaml", ConfigName)
 
 // configuration about ethereum
 const (
-	SepoliaUserReqContractAddr  = "0x3211f20Ec71C9f8E32CAF306c41766BA80aCbe87"
-	SepoliaResponseContractAddr = "0x12A0B1A747024096B59CC55BB2F3A9a9A42CbcB4"
-	GoerilUserReqContractAddr   = "0xcD6695d74CC71fcdf65a2E5A52126fEDeA44b256"
-	GoerilResponseContractAddr  = "0xEf666c73091a4D66632760F28289f6A54e7b0EEb"
+	SepoliaUserReqContractAddr  = "0x918780E2aC242DaE32F227D932b7E4cdF047D14E"
+	SepoliaResponseContractAddr = "0x3BE5339BD1d48C227B6eb4BE8d2e50c19d04c291"
+	SepoliaInfoReqContractAddr  = "0xe6e11Ca45396E56cDF775C9E3005375f5DeeB2A3"
+	GoerilUserReqContractAddr   = "0xcD6695d74CC71fcdf65a2E5A52126fEDeA44b256" // need update
+	GoerilResponseContractAddr  = "0xEf666c73091a4D66632760F28289f6A54e7b0EEb" // need update
 )
 
 var UserReqContractAddr = GoerilUserReqContractAddr
@@ -379,6 +383,7 @@ func getAssignInfo(cspId int, vmReq VMReq) (*AssignVO, error) {
 	url := "http://" + ip + ":" + strconv.Itoa(ReqPort) + assignPath
 	reqBodyContent := ReqBody{Config: int(vmReq.Config), Duration: int(vmReq.Duration), UserId: vmReq.UserId}
 	reqBodyContentJson, err := json.Marshal(reqBodyContent)
+	log.Printf("Request mag for cloudservice: %v", string(reqBodyContentJson))
 	if err != nil {
 		return nil, fmt.Errorf("Marshal RequestParam fail, err:%v", err)
 	}
@@ -440,7 +445,17 @@ func postToPublicChain(
 
 	}
 	log.Printf("Now is %v, getCollectiveSig", time.Now().UnixMilli())
-	hash, sig, err := cosiUtil.GetCollectiveSignature(msg, rosterFileName)
+
+	// BLSCosi
+	//resHash, sig, err := cosiUtil.GetCollectiveSignatureByBLSCosi(msg, rosterFileName)
+	// GoCosi
+	// get msg's hash
+	hasher := md5.New()
+	hasher.Write(msg)
+	hash := hasher.Sum(nil)
+	hashStr := base64.StdEncoding.EncodeToString(hash)
+	log.Printf("Msg's md5 hash(string) is: %s", hashStr)
+	sig, signers, err := cosiUtil.GetCollectiveSignatureByGoCosi(hashStr, CosiNodeAddr)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -465,7 +480,10 @@ func postToPublicChain(
 	if err != nil {
 		log.Fatal("Failed to create instance: %w", err)
 	}
-	tx, err := instance.ResponseToUser(auth, toAddr, req.UserId, hash, sig, msg, req.EncryptRequired)
+	// BLSCosi
+	//tx, err := instance.ResponseSigByBLSCosi(auth, toAddr, req.UserId, string(hash), resHash, sig, msg, req.EncryptRequired)
+	// GoCosi
+	tx, err := instance.ResponseSigByGoCosi(auth, toAddr, req.UserId, hashStr, sig, signers, msg, req.EncryptRequired)
 	if err != nil {
 		log.Fatal("Failed to write to response contract: %w", err)
 	}

@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 
 plt.rcParams['font.family'] = 'Times New Roman'
-plt.rcParams['font.size'] = '10.5'
+plt.rcParams['font.size'] = '12'
+plt.rcParams['figure.figsize'] = (8.0, 6.0)  # 单位是inches
 
 def node_time_fig():
     node_nums = [4, 10, 20, 30, 40, 50]
@@ -19,9 +20,9 @@ def node_time_fig():
     blscosi_failing = [10.009992, 10.01263, 8.349161, 5.571029667, 5.02049275, 6.0231808]
 
     ax1.plot(node_nums, gocosi_normal, 'r-', marker='.', label='GoCosi')
-    ax1.plot(node_nums, gocosi_failing, 'r--', marker='.', label='GoCosi with 1/3 failures')
-    ax1.plot(node_nums, blscosi_normal, 'b-', marker='.', label='BLSCosi')
-    ax1.plot(node_nums, blscosi_failing, 'b--', marker='.', label='BLSCosi with 1/3 failures')
+    ax1.plot(node_nums, gocosi_failing, 'r-', marker='x', label='GoCosi with 1/3 failures')
+    ax1.plot(node_nums, blscosi_normal, 'b--', marker='.', label='BLSCosi')
+    ax1.plot(node_nums, blscosi_failing, 'b--', marker='x', label='BLSCosi with 1/3 failures')
 
     ax1.set_xlabel('Number of Nodes')
     ax1.set_ylabel('Latency(s)')
@@ -29,6 +30,7 @@ def node_time_fig():
     plt.xticks(node_nums)
     plt.legend()
     plt.grid()
+    plt.savefig('./output/gocosiCp.eps', dpi=300)  # eps文件，用于LaTeX
     plt.show()
 
 

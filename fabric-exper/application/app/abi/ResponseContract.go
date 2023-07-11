@@ -31,7 +31,7 @@ var (
 
 // ResponseMetaData contains all meta data concerning the Response contract.
 var ResponseMetaData = &bind.MetaData{
-	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"userId\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dataSig\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"encryptRequired\",\"type\":\"bool\"}],\"name\":\"NewResponse\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"newestResponse\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"userId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"dataSig\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"encryptRequired\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"userId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"dataSig\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"encryptRequired\",\"type\":\"bool\"}],\"name\":\"responseToUser\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}]",
+	ABI: "[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"userId\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"resultHash\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"string\",\"name\":\"dataSig\",\"type\":\"string\"},{\"indexed\":false,\"internalType\":\"int32[]\",\"name\":\"signers\",\"type\":\"int32[]\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"bool\",\"name\":\"encryptRequired\",\"type\":\"bool\"},{\"indexed\":false,\"internalType\":\"int256\",\"name\":\"sigType\",\"type\":\"int256\"}],\"name\":\"NewResponse\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"userId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"resultHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"dataSig\",\"type\":\"string\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"encryptRequired\",\"type\":\"bool\"}],\"name\":\"ResponseSigByBLSCosi\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"string\",\"name\":\"userId\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"dataHash\",\"type\":\"string\"},{\"internalType\":\"string\",\"name\":\"dataSig\",\"type\":\"string\"},{\"internalType\":\"int32[]\",\"name\":\"signers\",\"type\":\"int32[]\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bool\",\"name\":\"encryptRequired\",\"type\":\"bool\"}],\"name\":\"ResponseSigByGoCosi\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"newestResponse\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"}]",
 }
 
 // ResponseABI is the input ABI used to generate the binding from.
@@ -182,83 +182,75 @@ func (_Response *ResponseTransactorRaw) Transact(opts *bind.TransactOpts, method
 
 // NewestResponse is a free data retrieval call binding the contract method 0xa4839fb8.
 //
-// Solidity: function newestResponse(address ) view returns(string userId, string dataHash, string dataSig, bytes data, bool encryptRequired)
-func (_Response *ResponseCaller) NewestResponse(opts *bind.CallOpts, arg0 common.Address) (struct {
-	UserId          string
-	DataHash        string
-	DataSig         string
-	Data            []byte
-	EncryptRequired bool
-}, error) {
+// Solidity: function newestResponse(address ) view returns(string)
+func (_Response *ResponseCaller) NewestResponse(opts *bind.CallOpts, arg0 common.Address) (string, error) {
 	var out []interface{}
 	err := _Response.contract.Call(opts, &out, "newestResponse", arg0)
 
-	outstruct := new(struct {
-		UserId          string
-		DataHash        string
-		DataSig         string
-		Data            []byte
-		EncryptRequired bool
-	})
 	if err != nil {
-		return *outstruct, err
+		return *new(string), err
 	}
 
-	outstruct.UserId = *abi.ConvertType(out[0], new(string)).(*string)
-	outstruct.DataHash = *abi.ConvertType(out[1], new(string)).(*string)
-	outstruct.DataSig = *abi.ConvertType(out[2], new(string)).(*string)
-	outstruct.Data = *abi.ConvertType(out[3], new([]byte)).(*[]byte)
-	outstruct.EncryptRequired = *abi.ConvertType(out[4], new(bool)).(*bool)
+	out0 := *abi.ConvertType(out[0], new(string)).(*string)
 
-	return *outstruct, err
+	return out0, err
 
 }
 
 // NewestResponse is a free data retrieval call binding the contract method 0xa4839fb8.
 //
-// Solidity: function newestResponse(address ) view returns(string userId, string dataHash, string dataSig, bytes data, bool encryptRequired)
-func (_Response *ResponseSession) NewestResponse(arg0 common.Address) (struct {
-	UserId          string
-	DataHash        string
-	DataSig         string
-	Data            []byte
-	EncryptRequired bool
-}, error) {
+// Solidity: function newestResponse(address ) view returns(string)
+func (_Response *ResponseSession) NewestResponse(arg0 common.Address) (string, error) {
 	return _Response.Contract.NewestResponse(&_Response.CallOpts, arg0)
 }
 
 // NewestResponse is a free data retrieval call binding the contract method 0xa4839fb8.
 //
-// Solidity: function newestResponse(address ) view returns(string userId, string dataHash, string dataSig, bytes data, bool encryptRequired)
-func (_Response *ResponseCallerSession) NewestResponse(arg0 common.Address) (struct {
-	UserId          string
-	DataHash        string
-	DataSig         string
-	Data            []byte
-	EncryptRequired bool
-}, error) {
+// Solidity: function newestResponse(address ) view returns(string)
+func (_Response *ResponseCallerSession) NewestResponse(arg0 common.Address) (string, error) {
 	return _Response.Contract.NewestResponse(&_Response.CallOpts, arg0)
 }
 
-// ResponseToUser is a paid mutator transaction binding the contract method 0x3771e25f.
+// ResponseSigByBLSCosi is a paid mutator transaction binding the contract method 0xb565dd4e.
 //
-// Solidity: function responseToUser(address to, string userId, string dataHash, string dataSig, bytes data, bool encryptRequired) returns()
-func (_Response *ResponseTransactor) ResponseToUser(opts *bind.TransactOpts, to common.Address, userId string, dataHash string, dataSig string, data []byte, encryptRequired bool) (*types.Transaction, error) {
-	return _Response.contract.Transact(opts, "responseToUser", to, userId, dataHash, dataSig, data, encryptRequired)
+// Solidity: function ResponseSigByBLSCosi(address to, string userId, string dataHash, string resultHash, string dataSig, bytes data, bool encryptRequired) returns()
+func (_Response *ResponseTransactor) ResponseSigByBLSCosi(opts *bind.TransactOpts, to common.Address, userId string, dataHash string, resultHash string, dataSig string, data []byte, encryptRequired bool) (*types.Transaction, error) {
+	return _Response.contract.Transact(opts, "ResponseSigByBLSCosi", to, userId, dataHash, resultHash, dataSig, data, encryptRequired)
 }
 
-// ResponseToUser is a paid mutator transaction binding the contract method 0x3771e25f.
+// ResponseSigByBLSCosi is a paid mutator transaction binding the contract method 0xb565dd4e.
 //
-// Solidity: function responseToUser(address to, string userId, string dataHash, string dataSig, bytes data, bool encryptRequired) returns()
-func (_Response *ResponseSession) ResponseToUser(to common.Address, userId string, dataHash string, dataSig string, data []byte, encryptRequired bool) (*types.Transaction, error) {
-	return _Response.Contract.ResponseToUser(&_Response.TransactOpts, to, userId, dataHash, dataSig, data, encryptRequired)
+// Solidity: function ResponseSigByBLSCosi(address to, string userId, string dataHash, string resultHash, string dataSig, bytes data, bool encryptRequired) returns()
+func (_Response *ResponseSession) ResponseSigByBLSCosi(to common.Address, userId string, dataHash string, resultHash string, dataSig string, data []byte, encryptRequired bool) (*types.Transaction, error) {
+	return _Response.Contract.ResponseSigByBLSCosi(&_Response.TransactOpts, to, userId, dataHash, resultHash, dataSig, data, encryptRequired)
 }
 
-// ResponseToUser is a paid mutator transaction binding the contract method 0x3771e25f.
+// ResponseSigByBLSCosi is a paid mutator transaction binding the contract method 0xb565dd4e.
 //
-// Solidity: function responseToUser(address to, string userId, string dataHash, string dataSig, bytes data, bool encryptRequired) returns()
-func (_Response *ResponseTransactorSession) ResponseToUser(to common.Address, userId string, dataHash string, dataSig string, data []byte, encryptRequired bool) (*types.Transaction, error) {
-	return _Response.Contract.ResponseToUser(&_Response.TransactOpts, to, userId, dataHash, dataSig, data, encryptRequired)
+// Solidity: function ResponseSigByBLSCosi(address to, string userId, string dataHash, string resultHash, string dataSig, bytes data, bool encryptRequired) returns()
+func (_Response *ResponseTransactorSession) ResponseSigByBLSCosi(to common.Address, userId string, dataHash string, resultHash string, dataSig string, data []byte, encryptRequired bool) (*types.Transaction, error) {
+	return _Response.Contract.ResponseSigByBLSCosi(&_Response.TransactOpts, to, userId, dataHash, resultHash, dataSig, data, encryptRequired)
+}
+
+// ResponseSigByGoCosi is a paid mutator transaction binding the contract method 0x2538811c.
+//
+// Solidity: function ResponseSigByGoCosi(address to, string userId, string dataHash, string dataSig, int32[] signers, bytes data, bool encryptRequired) returns()
+func (_Response *ResponseTransactor) ResponseSigByGoCosi(opts *bind.TransactOpts, to common.Address, userId string, dataHash string, dataSig string, signers []int32, data []byte, encryptRequired bool) (*types.Transaction, error) {
+	return _Response.contract.Transact(opts, "ResponseSigByGoCosi", to, userId, dataHash, dataSig, signers, data, encryptRequired)
+}
+
+// ResponseSigByGoCosi is a paid mutator transaction binding the contract method 0x2538811c.
+//
+// Solidity: function ResponseSigByGoCosi(address to, string userId, string dataHash, string dataSig, int32[] signers, bytes data, bool encryptRequired) returns()
+func (_Response *ResponseSession) ResponseSigByGoCosi(to common.Address, userId string, dataHash string, dataSig string, signers []int32, data []byte, encryptRequired bool) (*types.Transaction, error) {
+	return _Response.Contract.ResponseSigByGoCosi(&_Response.TransactOpts, to, userId, dataHash, dataSig, signers, data, encryptRequired)
+}
+
+// ResponseSigByGoCosi is a paid mutator transaction binding the contract method 0x2538811c.
+//
+// Solidity: function ResponseSigByGoCosi(address to, string userId, string dataHash, string dataSig, int32[] signers, bytes data, bool encryptRequired) returns()
+func (_Response *ResponseTransactorSession) ResponseSigByGoCosi(to common.Address, userId string, dataHash string, dataSig string, signers []int32, data []byte, encryptRequired bool) (*types.Transaction, error) {
+	return _Response.Contract.ResponseSigByGoCosi(&_Response.TransactOpts, to, userId, dataHash, dataSig, signers, data, encryptRequired)
 }
 
 // ResponseNewResponseIterator is returned from FilterNewResponse and is used to iterate over the raw logs and unpacked data for NewResponse events raised by the Response contract.
@@ -334,15 +326,18 @@ type ResponseNewResponse struct {
 	To              common.Address
 	UserId          string
 	DataHash        string
+	ResultHash      string
 	DataSig         string
+	Signers         []int32
 	Data            []byte
 	EncryptRequired bool
+	SigType         *big.Int
 	Raw             types.Log // Blockchain specific contextual infos
 }
 
-// FilterNewResponse is a free log retrieval operation binding the contract event 0xd970b922793008b27c4e128de0e9f5cde8460d63078a633d9963e43713795330.
+// FilterNewResponse is a free log retrieval operation binding the contract event 0xedca6f31e7333396d244e62778791f7c92937d2cc23167f1929ca96dcbb15165.
 //
-// Solidity: event NewResponse(address from, address to, string userId, string dataHash, string dataSig, bytes data, bool encryptRequired)
+// Solidity: event NewResponse(address from, address to, string userId, string dataHash, string resultHash, string dataSig, int32[] signers, bytes data, bool encryptRequired, int256 sigType)
 func (_Response *ResponseFilterer) FilterNewResponse(opts *bind.FilterOpts) (*ResponseNewResponseIterator, error) {
 
 	logs, sub, err := _Response.contract.FilterLogs(opts, "NewResponse")
@@ -352,9 +347,9 @@ func (_Response *ResponseFilterer) FilterNewResponse(opts *bind.FilterOpts) (*Re
 	return &ResponseNewResponseIterator{contract: _Response.contract, event: "NewResponse", logs: logs, sub: sub}, nil
 }
 
-// WatchNewResponse is a free log subscription operation binding the contract event 0xd970b922793008b27c4e128de0e9f5cde8460d63078a633d9963e43713795330.
+// WatchNewResponse is a free log subscription operation binding the contract event 0xedca6f31e7333396d244e62778791f7c92937d2cc23167f1929ca96dcbb15165.
 //
-// Solidity: event NewResponse(address from, address to, string userId, string dataHash, string dataSig, bytes data, bool encryptRequired)
+// Solidity: event NewResponse(address from, address to, string userId, string dataHash, string resultHash, string dataSig, int32[] signers, bytes data, bool encryptRequired, int256 sigType)
 func (_Response *ResponseFilterer) WatchNewResponse(opts *bind.WatchOpts, sink chan<- *ResponseNewResponse) (event.Subscription, error) {
 
 	logs, sub, err := _Response.contract.WatchLogs(opts, "NewResponse")
@@ -389,9 +384,9 @@ func (_Response *ResponseFilterer) WatchNewResponse(opts *bind.WatchOpts, sink c
 	}), nil
 }
 
-// ParseNewResponse is a log parse operation binding the contract event 0xd970b922793008b27c4e128de0e9f5cde8460d63078a633d9963e43713795330.
+// ParseNewResponse is a log parse operation binding the contract event 0xedca6f31e7333396d244e62778791f7c92937d2cc23167f1929ca96dcbb15165.
 //
-// Solidity: event NewResponse(address from, address to, string userId, string dataHash, string dataSig, bytes data, bool encryptRequired)
+// Solidity: event NewResponse(address from, address to, string userId, string dataHash, string resultHash, string dataSig, int32[] signers, bytes data, bool encryptRequired, int256 sigType)
 func (_Response *ResponseFilterer) ParseNewResponse(log types.Log) (*ResponseNewResponse, error) {
 	event := new(ResponseNewResponse)
 	if err := _Response.contract.UnpackLog(event, "NewResponse", log); err != nil {

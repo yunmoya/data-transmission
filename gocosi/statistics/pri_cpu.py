@@ -4,9 +4,14 @@ import pandas
 import matplotlib.pyplot as plt
 from pandas import DataFrame
 
-plt.rcParams['font.family'] = 'Times New Roman'
-plt.rcParams['font.size'] = '10.5'
-
+config = {
+    "font.family": 'serif', # 衬线字体
+    "font.size": 20, # 相当于小四大小
+    "font.serif": ['SimSun'], # 宋体
+    "mathtext.fontset": 'stix', # matplotlib渲染数学字体时使用的字体，和Times New Roman差别不大
+    'figure.figsize': (10.0, 10.0)
+}
+plt.rcParams.update(config)
 def parse_pb_xls(filename):
     wb = openpyxl.load_workbook(filename)
     data = dict()
@@ -42,8 +47,9 @@ def round_time_fig():
         # plt.text(func_list[i], y[i], "%.f"%y[i], ha='center')
 
     # plt.xlabel('数据类型', fontdict=font1)
-    plt.xticks(rotation=30)
-    plt.ylabel('CPU Usage(%)')
+    plt.xticks(rotation=20)
+    plt.ylabel('CPU 使用率(%)')
+    plt.savefig('./output/pricpu.svg', dpi=300)  # eps文件，用于LaTeX
     plt.show()
 
 

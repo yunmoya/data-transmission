@@ -1,6 +1,6 @@
 msp-id: Org1MSP
 crypto-path: ../../../../test-network/organizations/peerOrganizations/org1.example.com
-cert-path: ../../../../test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/User1@org1.example.com-cert.pem
+cert-path: ../../../../test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/signcerts/cert.pem
 key-path: ../../../../test-network/organizations/peerOrganizations/org1.example.com/users/User1@org1.example.com/msp/keystore/
 tls-cert-path: ../../../../test-network/organizations/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
 peer-endpoint: localhost:7051

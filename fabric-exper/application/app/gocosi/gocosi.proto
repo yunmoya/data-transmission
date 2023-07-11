@@ -1,0 +1,54 @@
+syntax = "proto3";
+option go_package = "app/gocosi/gocosi";
+package gocosi;
+
+service GocosiRPC {
+    rpc RegisterNode(RegisterNodeReq) returns (CommonResp) {}
+    rpc NewMsg(NewMsgReq) returns (NewMsgResp) {}
+    rpc GossipReq(Gossip) returns (CommonResp) {}
+    rpc Info(Empty) returns (InfoResp) {}
+    rpc GetPubkey(Empty) returns (GetPubkeyResp) {}
+}
+
+message RegisterNodeReq {
+    string nodes = 1;
+}
+
+message NewMsgReq {
+    string msg = 1;
+}
+
+message Gossip {
+    repeated string subs = 1;
+    repeated string unsubs = 2;
+    // repeated string events_id = 3;
+    map<string, string> event_list = 3;
+}
+
+message InfoResp {
+    repeated string subs = 1;
+    repeated string unsubs = 2;
+    repeated string pubkey = 3;
+    repeated double latency = 4;
+    string round_time = 5;
+    int32 neighbours = 6;
+}
+
+message GetPubkeyResp {
+    map<string, string> publickeys = 1;
+}
+
+message NewMsgResp {
+    string signature = 1;
+    repeated int32 signers = 2;
+}
+message CommonResp {
+    string message = 1;
+}
+
+message Empty {
+
+}
+
+// python -m grpc_tools.protoc -Igocosi --python_out=gocosi --pyi_out=gocosi --grpc_python_out=gocosi gocosi/gocosi.proto
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative gocosi.proto
